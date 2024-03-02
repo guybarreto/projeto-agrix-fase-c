@@ -77,7 +77,7 @@ public class CropController {
    *
    * @return the all crops
    */
-  @GetMapping()
+  @GetMapping
   @Secured({"ROLE_MANAGER", "ROLE_ADMIN"})
   public ResponseEntity<List<CropDto>> getAllCrops() {
     List<Crop> crops = cropService.getAllCrops();
