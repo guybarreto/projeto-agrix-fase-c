@@ -59,7 +59,7 @@ public class FarmController {
    * @return the all farms
    */
   @GetMapping
-  @Secured({"ROLE_ADMIN", "ROLE_USER", "ROLE_MANAGER"})
+  @Secured({"ROLE_USER", "ROLE_MANAGER", "ROLE_ADMIN"})
   public ResponseEntity<List<FarmDto>> getAllFarms() {
     List<Farm> farms = farmService.getAllFarms();
 
