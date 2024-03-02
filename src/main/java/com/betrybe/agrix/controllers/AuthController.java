@@ -12,6 +12,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+/**
+ * The type Auth controller.
+ */
 @RestController
 @RequestMapping("/auth")
 public class AuthController {
@@ -19,6 +22,12 @@ public class AuthController {
   private final AuthenticationManager authenticationManager;
   private final TokenService tokenService;
 
+  /**
+   * Instantiates a new Auth controller.
+   *
+   * @param authenticationManager the authentication manager
+   * @param tokenService          the token service
+   */
   @Autowired
   public AuthController(AuthenticationManager authenticationManager,
       TokenService tokenService) {
@@ -26,6 +35,12 @@ public class AuthController {
     this.tokenService = tokenService;
   }
 
+  /**
+   * Login token dto.
+   *
+   * @param authDto the auth dto
+   * @return the token dto
+   */
   @PostMapping("/login")
   public TokenDto login(@RequestBody AuthDto authDto) {
     UsernamePasswordAuthenticationToken usernamePassword =

@@ -15,12 +15,21 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
+/**
+ * The type Jwt filter.
+ */
 @Component
 public class JwtFilter extends OncePerRequestFilter {
 
   private final TokenService tokenService;
   private final PersonService personService;
 
+  /**
+   * Instantiates a new Jwt filter.
+   *
+   * @param tokenService  the token service
+   * @param personService the person service
+   */
   @Autowired
   public JwtFilter(TokenService tokenService, PersonService personService) {
     this.tokenService = tokenService;
@@ -28,7 +37,11 @@ public class JwtFilter extends OncePerRequestFilter {
   }
 
   @Override
-  protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
+  protected void doFilterInternal(
+      HttpServletRequest request,
+      HttpServletResponse response,
+      FilterChain filterChain
+  ) throws ServletException, IOException {
 
     Optional<String> token = extractToken(request);
 
@@ -44,7 +57,7 @@ public class JwtFilter extends OncePerRequestFilter {
     filterChain.doFilter(request, response);
   }
 
-  private Optional<String> extractToken(HttpServletRequest request){
+  private Optional<String> extractToken(HttpServletRequest request) {
     String authHeader = request.getHeader("Authorization");
 
     if (authHeader == null) {

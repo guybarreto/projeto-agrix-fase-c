@@ -8,5 +8,11 @@ import org.springframework.data.jpa.repository.JpaRepository;
  */
 public interface PersonRepository extends JpaRepository<Person, Long> {
 
+  /**
+   * Find by username person.
+   *
+   * @param username the username
+   * @return the person
+   */
   Person findByUsername(String username);
 }

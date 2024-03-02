@@ -46,6 +46,12 @@ public class GlobalExceptionHandler {
     return ResponseEntity.status(HttpStatus.NOT_FOUND).body(exception.getMessage());
   }
 
+  /**
+   * Handle person not found exception response entity.
+   *
+   * @param exception the exception
+   * @return the response entity
+   */
   @ExceptionHandler(PersonNotFoundException.class)
   public ResponseEntity<String> handlePersonNotFoundException(
       PersonNotFoundException exception
